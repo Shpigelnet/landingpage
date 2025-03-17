@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מנהיגות דיגיטלית בווינה | מסע למידה לבוגרי מנדל</title>
+    <style>
+        /* גופנים */
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+        
+        /* איפוס CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        /* עיצוב כללי */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #2e4d7b;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #1a3a68;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid #2e4d7b;
+            color: #2e4d7b;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(46, 77, 123, 0.1);
+            color: #1a3a68;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #2e4d7b;
+        }
+        
+        .section-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+        
+        /* הדר */
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2e4d7b;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        /* סקציית הגיבור */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, #e1ecff 0%, #f0f5ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/api/placeholder/1200/800');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #2e4d7b;
+        }
+        
+        .hero h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: #546e95;
+        }
+        
+        /* אודות */
+        .about {
+            background-color: white;
+        }
+        
+        /* מטרות */
+        .goals {
+            background-color: #f0f5ff;
+        }
+        
+        .goals-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .goal-item {
+            flex: 1 0 300px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .goal-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .goal-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #2e4d7b;
+        }
+        
+        .goal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #2e4d7b;
+        }
+        
+        /* לוח זמנים */
+        .schedule {
+            background-color: white;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+        
+        .schedule-table th, .schedule-table td {
+            padding: 15px;
+            text-align: right;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .schedule-table th {
+            background-color: #f0f5ff;
+            color: #2e4d7b;
+            font-weight: 700;
+        }
+        
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .schedule-table tr:hover td {
+            background-color: #f8f9fa;
+        }
+        
+        /* הדוברים */
+        .speakers {
+            background-color: #f0f5ff;
+        }
+        
+        .speakers-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .speaker-card {
+            flex: 1 0 300px;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .speaker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .speaker-image {
+            height: 200px;
+            background-color: #e1ecff;
+            background-image: url('/api/placeholder/300/300');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .speaker-info {
+            padding: 20px;
+        }
+        
+        .speaker-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: #2e4d7b;
+        }
+        
+        .speaker-info p {
+            color: #546e95;
+            font-size: 0.95rem;
+        }
+        
+        /* מידע טכני */
+        .info {
+            background-color: white;
+        }
+        
+        .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .info-item {
+            flex: 1 0 300px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #f0f5ff;
+        }
+        
+        .info-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #2e4d7b;
+        }
+        
+        /* המלצות */
+        .testimonials {
+            background-color: #2e4d7b;
+            color: white;
+        }
+        
+        .testimonials .section-title {
+            color: white;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 6rem;
+            color: rgba(255, 255, 255, 0.2);
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-style: italic;
+            font-weight: 500;
+        }
+        
+        /* שאלות נפוצות */
+        .faq {
+            background-color: white;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2e4d7b;
+        }
+        
+        /* רישום */
+        .register {
+            background: linear-gradient(135deg, #2e4d7b 0%, #1a3a68 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .register .section-title {
+            color: white;
+        }
+        
+        .register .btn {
+            background-color: white;
+            color: #2e4d7b;
+            margin-top: 20px;
+            font-size: 1.3rem;
+            padding: 15px 40px;
+        }
+        
+        .register .btn:hover {
+            background-color: #f0f5ff;
+            color: #1a3a68;
+        }
+        
+        /* פוטר */
+        .footer {
+            padding: 40px 0;
+            background-color: #1a3a68;
+            color: white;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+        }
+        
+        .footer-logo {
+            flex: 1 0 300px;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            flex: 1 0 200px;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* מדיה קווריז */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 150px 0 70px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .goal-item, .speaker-card, .info-item {
+                flex: 1 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- הדר -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">קרן מנדל</a>
+            <a href="#register" class="btn btn-secondary">הרשמה עכשיו</a>
+        </div>
+    </header>
+    
+    <!-- סקציית הגיבור -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>הובילו את העתיד: מנהיגות דיגיטלית בווינה</h1>
+                <h2>מסע למידה ייחודי לבוגרי ובוגרות מנדל</h2>
+                <a href="#register" class="btn">הרשמה למסע</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- אודות -->
+    <section class="about section">
+        <div class="container">
+            <h2 class="section-title">למה אנחנו כאן?</h2>
+            <p class="section-subtitle"><strong>מנהיגות דיגיטלית היא לא רק טכנולוגיה – היא שינוי תפיסתי וארגוני.</strong></p>
+            <p>הצטרפו למשלחת בוגרי ובוגרות מנדל לחוויה פורצת דרך בווינה, שבה נעמיק באתגרים ובהזדמנויות של העידן הדיגיטלי, תוך מפגש עם מומחים, ארגונים וקהילות חדשניות.</p>
+        </div>
+    </section>
+    
+    <!-- מטרות -->
+    <section class="goals section">
+        <div class="container">
+            <h2 class="section-title">מטרות המסע</h2>
+            <p class="section-subtitle">מה תקבלו מהמסע?</p>
+            
+            <div class="goals-list">
+                <div class="goal-item">
+                    <div class="goal-icon">🎯</div>
+                    <h3>למידה מעשית</h3>
+                    <p>פיתוח חשיבה אסטרטגית-דיגיטלית הלכה למעשה, דרך התנסויות מעשיות ולמידה ממומחים מובילים.</p>
+                </div>
+                
+                <div class="goal-item">
+                    <div class="goal-icon">🌍</div>
+                    <h3>השראה בינלאומית</h3>
+                    <p>היכרות עם מודלים חדשניים של מנהיגות דיגיטלית באירופה, והרחבת אופקים מקצועיים.</p>
+                </div>
+                
+                <div class="goal-item">
+                    <div class="goal-icon">👥</div>
+                    <h3>קהילת עמיתים</h3>
+                    <p>חיזוק שיתופי פעולה מקצועיים בין בוגרי ובוגרות מנדל, והעמקת הקשרים המקצועיים.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- לוח זמנים -->
+    <section class="schedule section">
+        <div class="container">
+            <h2 class="section-title">מה בתכנית?</h2>
+            <p class="section-subtitle">המסלול שלנו בקצרה</p>
+            
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>יום</th>
+                        <th>תוכן מרכזי</th>
+                        <th>פעילות לדוגמה</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>מנהיגות דיגיטלית: מבט רחב</strong></td>
+                        <td>מפגש עם מנהלים מארגוני הייטק וחדשנות</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>חדשנות חברתית וטכנולוגיה</strong></td>
+                        <td>סיור בארגונים חברתיים המובילים חדשנות</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>אתגרים של מנהיגות בעידן דיגיטלי</strong></td>
+                        <td>סדנה מעשית על הובלת תהליכי שינוי דיגיטלי</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="text-center" style="margin-top: 30px;">
+                <a href="#" class="btn btn-secondary">לתכנית המפורטת</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- למי מיועד? -->
+    <section class="audience section" style="background-color: #f0f5ff;">
+        <div class="container">
+            <h2 class="section-title">למי מיועד המסע?</h2>
+            <p>המסע פתוח לבוגרי ובוגרות קרן מנדל שמובילים (או מעוניינים להוביל) תהליכים של חדשנות דיגיטלית בארגונים חינוכיים, חברתיים וציבוריים.</p>
+        </div>
+    </section>
+    
+    <!-- דוברים -->
+    <section class="speakers section">
+        <div class="container">
+            <h2 class="section-title">דוברים ומארחים מרכזיים</h2>
+            <p class="section-subtitle">מומחים מובילים שילוו אתכם בדרך</p>
+            
+            <div class="speakers-grid">
+                <div class="speaker-card">
+                    <div class="speaker-image"></div>
+                    <div class="speaker-info">
+                        <h3>ד"ר אנה שמידט</h3>
+                        <p>מומחית בינלאומית במנהיגות דיגיטלית</p>
+                    </div>
+                </div>
+                
+                <div class="speaker-card">
+                    <div class="speaker-image"></div>
+                    <div class="speaker-info">
+                        <h3>מר יוהאן קליין</h3>
+                        <p>יזם חברתי ומייסד HUB דיגיטלי בווינה</p>
+                    </div>
+                </div>
+                
+                <div class="speaker-card">
+                    <div class="speaker-image"></div>
+                    <div class="speaker-info">
+                        <h3>צוות ההדרכה של קרן מנדל</h3>
+                        <p>מלווים מקצועיים לאורך כל המסע</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- מידע טכני -->
+    <section class="info section">
+        <div class="container">
+            <h2 class="section-title">מידע טכני חשוב</h2>
+            <p class="section-subtitle">כל הפרטים שצריך לדעת</p>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>תאריכים</h3>
+                    <p>יעודכן בקרוב</p>
+                </div>
+                
+                <div class="info-item">
+                    <h3>מקום</h3>
+                    <p>וינה, אוסטריה</p>
+                </div>
+                
+                <div class="info-item">
+                    <h3>עלות</h3>
+                    <p>יעודכן בקרוב</p>
+                    <p>אפשרויות מימון ומלגות זמינות</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- המלצות -->
+    <section class="testimonials section">
+        <div class="container">
+            <h2 class="section-title">המלצות מבוגרים קודמים</h2>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    "המסע שינה את האופן שבו אני תופס מנהיגות וחדשנות בארגון שלי. חובה לכל מי שרוצה להוביל בעולם החדש."
+                </div>
+                <div class="testimonial-author">— אלעד, בוגר מחזור 2023</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- שאלות נפוצות -->
+    <section class="faq section">
+        <div class="container">
+            <h2 class="section-title">שאלות נפוצות</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">האם דרוש רקע טכנולוגי מוקדם?</div>
+                <div class="faq-answer">לא. המסע מתאים למנהיגים בכל רמות הידע הטכנולוגי.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">האם קיימת אפשרות למלגה או סבסוד?</div>
+                <div class="faq-answer">כן, לפרטים נוספים פנו לצוות המארגן.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">כמה משתתפים יהיו במסע?</div>
+                <div class="faq-answer">המסע מוגבל ל-20 משתתפים על מנת לאפשר חוויה אישית ואיכותית.</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- הרשמה -->
+    <section id="register" class="register section">
+        <div class="container">
+            <h2 class="section-title">מספר המקומות מוגבל!</h2>
+            <p class="section-subtitle">הצטרפו אלינו עכשיו ושריינו את מקומכם</p>
+            <a href="#" class="btn">הרשמה עכשיו למסע</a>
+        </div>
+    </section>
+    
+    <!-- פוטר -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">קרן מנדל</div>
+                    <p>מובילים חינוך וחדשנות בישראל</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>קישורים מהירים</h3>
+                    <ul>
+                        <li><a href="#">דף הבית</a></li>
+                        <li><a href="#">אודות קרן מנדל</a></li>
+                        <li><a href="#">תכניות נוספות</a></li>
+                        <li><a href="#">צור קשר</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>צור קשר</h3>
+                    <ul>
+                        <li>info@mandel.org.il</li>
+                        <li>02-123-4567</li>
+                        <li>ירושלים, ישראל</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 קרן מנדל ישראל. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
